@@ -10,7 +10,6 @@ __meta__ = { "__editor_plugin_screen__":"Script" }
 
 [node name="fox" parent="." instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 33.311, 514.517 )
 gravity_scale = 10.0
 damp_override/linear = 1.0
 

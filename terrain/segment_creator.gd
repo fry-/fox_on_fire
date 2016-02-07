@@ -8,7 +8,6 @@ var end = load("res://terrain/end_segment.tscn")
 
 var segment_new
 var segment_count = 0
-var position_start = Vector2(64,320)
 
 var direction
 var gradient
@@ -49,13 +48,14 @@ func _ready():
 			segment_creation(mid)
 		segment_creation(end)
 	
-	new_startpoint()
+	global.position_start.x += 500
+	get_node("pointer").set_pos(global.position_start)
 	
 	pass
 
 func segment_creation(segment):
 	segment_new = segment.instance()
-	segment_new.set_pos(position_start)
+	segment_new.set_pos(global.position_start)
 	
 	if MAX_ANGLE < abs(angle + (gradient * abs(angle_start))):
 		gradient *= -1
@@ -66,11 +66,6 @@ func segment_creation(segment):
 	angle_start += gradient
 	add_child(segment_new)
 	
-	position_start.y += sin(deg2rad(angle)) * SEGMENT_SIZE
-	position_start.x += cos(deg2rad(angle)) * SEGMENT_SIZE
-	pass
-
-func new_startpoint():
-	position_start.x += 500
-	get_node("position").set_pos(position_start)
+	global.position_start.y += sin(deg2rad(angle)) * SEGMENT_SIZE
+	global.position_start.x += cos(deg2rad(angle)) * SEGMENT_SIZE
 	pass

@@ -20,7 +20,7 @@ var time = 0.0
 #	pass
 
 func _integrate_forces(state):
-	var speed_x = get_node("/root/global").speed_x
+	var speed_x = global.speed_x
 	# input events
 	var button_jump = Input.is_action_pressed("jump")
 	var button_dash = Input.is_action_pressed("dash")
@@ -50,5 +50,5 @@ func _integrate_forces(state):
 	button_dash_old = button_dash
 	contact_count_old = contact_count
 	
-	current_velocity.x = speed_x
+	current_velocity.x = 0
 	state.set_linear_velocity(current_velocity)
