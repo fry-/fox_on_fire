@@ -48,6 +48,9 @@ func _ready():
 		for i in range(1,segment_amount):
 			segment_creation(mid)
 		segment_creation(end)
+	
+	new_startpoint()
+	
 	pass
 
 func segment_creation(segment):
@@ -65,3 +68,9 @@ func segment_creation(segment):
 	
 	position_start.y += sin(deg2rad(angle)) * SEGMENT_SIZE
 	position_start.x += cos(deg2rad(angle)) * SEGMENT_SIZE
+	pass
+
+func new_startpoint():
+	position_start.x += 500
+	get_node("position").set_pos(position_start)
+	pass

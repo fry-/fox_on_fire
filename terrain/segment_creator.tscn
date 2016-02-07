@@ -2,9 +2,11 @@
 
 [ext_resource path="res://terrain/segment_creator.gd" type="Script" id=1]
 
-[node name="Segment_Creator" type="Node2D"]
+[node name="segment_creator" type="Node2D"]
 
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
+
+[node name="position" type="Position2D" parent="."]
 
 

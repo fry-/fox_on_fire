@@ -1,7 +1,7 @@
 
 extends RigidBody2D
 
-var speed_x = 0
+
 var speed_y = -500
 
 # gravity scale of the rigid body
@@ -20,6 +20,7 @@ var time = 0.0
 #	pass
 
 func _integrate_forces(state):
+	var speed_x = get_node("/root/global").speed_x
 	# input events
 	var button_jump = Input.is_action_pressed("jump")
 	var button_dash = Input.is_action_pressed("dash")
@@ -43,9 +44,6 @@ func _integrate_forces(state):
 		button_jump_old = button_jump
 		set_gravity_scale(GRAVITY_NORMAL)
 		
-	
-	
-	print(get_pos())
 	
 	# safe former states
 	button_jump_old = button_jump

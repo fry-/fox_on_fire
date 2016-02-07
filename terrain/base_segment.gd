@@ -1,12 +1,10 @@
 
-extends Node2D
+extends RigidBody2D
 
-const SPEED_X = 500
+const speed_x = -500
 
-func _ready():
-	set_fixed_process(true)
-	pass
-
-func _fixed_proces(delta):
-	set_global_pos(-SPEED_X * delta)
+func _integrate_forces(state):
+	state.set_linear_velocity(Vector2(speed_x,0))
+	if get_global_pos().x < -128:
+		queue_free()
 	pass

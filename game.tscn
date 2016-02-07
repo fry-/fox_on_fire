@@ -1,32 +1,19 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://fox/fox.tscn" type="PackedScene" id=1]
-[ext_resource path="res://floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game.gd" type="Script" id=1]
+[ext_resource path="res://fox/fox.tscn" type="PackedScene" id=2]
 
-[node name="Node2D" type="Node2D"]
+[node name="game" type="Node2D"]
 
+script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
 
-[node name="Fox" parent="." instance=ExtResource( 1 )]
+[node name="fox" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 33.311, 514.517 )
 gravity_scale = 10.0
 damp_override/linear = 1.0
 
-[node name="StaticBody2D" parent="." instance=ExtResource( 2 )]
-
-[node name="StaticBody2D1" parent="." instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 2332, 532 )
-transform/rot = 3.85975
-
-[node name="StaticBody2D2" parent="." instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 4232, 732 )
-
-[node name="StaticBody2D3" parent="." instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 5740.83, 1040.83 )
-transform/rot = -19.4576
+[node name="terrain" type="Node2D" parent="."]
 
 
