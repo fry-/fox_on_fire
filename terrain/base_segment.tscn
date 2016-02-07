@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://terrain/base_segment.gd" type="Script" id=1]
+[ext_resource path="res://terrain.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 32.0
+height = 64.0
+
+[node name="Segment" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+offset = Vector2( 32, 0 )
+region = true
+region_rect = Rect2( 0, 8, 128, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 32, 0 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+transform/rot = 90.0
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+
