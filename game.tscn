@@ -12,8 +12,8 @@ __meta__ = { "__editor_plugin_screen__":"Script" }
 [node name="fox" parent="." instance=ExtResource( 2 )]
 
 z/relative = false
+mass = 0.01
 gravity_scale = 10.0
-damp_override/angular = -1.0
 
 [node name="terrain" type="Node2D" parent="."]
 

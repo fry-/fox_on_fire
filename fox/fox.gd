@@ -50,6 +50,5 @@ func _integrate_forces(state):
 	button_dash_old = button_dash
 	contact_count_old = contact_count
 	
-	current_velocity.x = -get_linear_velocity().x
-	print(get_linear_velocity())
+	current_velocity.x = -get_global_pos().x * 100
 	state.set_linear_velocity(current_velocity)
