@@ -50,6 +50,10 @@ func _integrate_forces(state):
 	button_dash_old = button_dash
 	contact_count_old = contact_count
 	
-	current_velocity.x = -get_linear_velocity().x
-	print(get_linear_velocity())
+	# move the player back to its x-position
+	var t = state.get_transform()
+	t = t.translated(Vector2(-t.get_origin().x, 0))
+	state.set_transform(t)
+	
+	current_velocity.x = 0
 	state.set_linear_velocity(current_velocity)
