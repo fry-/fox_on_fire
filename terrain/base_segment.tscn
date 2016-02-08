@@ -9,7 +9,7 @@ custom_solver_bias = 0.0
 radius = 32.0
 height = 64.0
 
-[node name="Segment" type="RigidBody2D"]
+[node name="Segment" type="StaticBody2D"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -17,21 +17,10 @@ shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, 32, 0 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 0
-mode = 2
-mass = 1.0
-friction = 1.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
 bounce = 0.0
-gravity_scale = 1.0
-custom_integrator = false
-continuous_cd = 0
-contacts_reported = 0
-contact_monitor = false
-sleeping = false
-can_sleep = true
-velocity/linear = Vector2( 0, 0 )
-velocity/angular = 0.0
-damp_override/linear = -1.0
-damp_override/angular = -1.0
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
 
