@@ -3,16 +3,17 @@
 [ext_resource path="res://fox/fox.gd" type="Script" id=1]
 [ext_resource path="res://fox/player1.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 16, 16 )
+radius = 16.0
+height = 16.0
 
 [node name="fox" type="RigidBody2D"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 2, -0, 0, 2, 0, 0 )
+shapes/0/transform = Matrix32( -8.74228e-08, -2, 2, -8.74228e-08, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -30,9 +31,9 @@ can_sleep = true
 velocity/linear = Vector2( 0, 0 )
 velocity/angular = 0.0
 damp_override/linear = -1.0
-damp_override/angular = -1.0
+damp_override/angular = 10.0
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = { "__editor_plugin_screen__":"Script" }
 
 [node name="sprite" type="Sprite" parent="."]
 
@@ -40,6 +41,8 @@ texture = ExtResource( 2 )
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
 
+visibility/behind_parent = true
+transform/rot = 90.0
 transform/scale = Vector2( 2, 2 )
 shape = SubResource( 1 )
 trigger = false

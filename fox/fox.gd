@@ -7,6 +7,7 @@ var speed_y = -500
 # gravity scale of the rigid body
 const GRAVITY_NORMAL = 10
 const GRAVITY_FLY = 5
+const MAX_ROTATION = PI/6
 
 # former states
 var button_jump_old = false
@@ -15,9 +16,7 @@ var contact_count_old
 
 var jumps_left = 2
 var time = 0.0
-
-#func _ready():
-#	pass
+var jump_mode = false
 
 func _integrate_forces(state):
 	
@@ -26,11 +25,20 @@ func _integrate_forces(state):
 	var button_dash = Input.is_action_pressed("dash")
 	var contact_count = state.get_contact_count()
 	
+	if contact_count == 0:
+		set_angular_velocity(get_rot())
+	elif abs(get_rot()) > MAX_ROTATION:
+		set_angular_velocity(-sign(get_rot()) * (MAX_ROTATION - abs(get_rot())))
+	else:
+		set_angular_velocity(get_angular_velocity())
+	
 	var current_velocity = state.get_linear_velocity()
 	if (contact_count == 1) and (contact_count_old == 0):
+#		jump_mode = false
 		jumps_left = 2
 	
 	if button_jump and (button_jump_old == false) and jumps_left: # first jump button press
+#		jump_mode = true
 		current_velocity.y = speed_y
 		button_jump_old = button_jump
 		jumps_left -= 1
