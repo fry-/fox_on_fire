@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://fox/fox.gd" type="Script" id=1]
-[ext_resource path="res://fox/player1.png" type="Texture" id=2]
+[ext_resource path="res://fox/fox.png" type="Texture" id=2]
+[ext_resource path="res://fox/fox_tail.png" type="Texture" id=3]
+[ext_resource path="res://fox/tail.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -33,11 +35,170 @@ velocity/angular = 0.0
 damp_override/linear = -1.0
 damp_override/angular = 10.0
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = { "__editor_plugin_screen__":"2D" }
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="fox_body" type="Node2D" parent="."]
+
+[node name="body_main" type="Sprite" parent="fox_body"]
+
+transform/pos = Vector2( 16, -6 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -39, -20 )
+region = true
+region_rect = Rect2( 40, 15, 55, 40 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="head" type="Sprite" parent="fox_body/body_main"]
 
 texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -18, -30 )
+region = true
+region_rect = Rect2( 100, 5, 55, 50 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="Position2D" type="Position2D" parent="fox_body/body_main/head"]
+
+transform/pos = Vector2( 30, -12 )
+transform/scale = Vector2( 0.2, 0.2 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="front_leg_1" type="Sprite" parent="fox_body/body_main"]
+
+transform/pos = Vector2( 2.70815, 7.79107 )
+transform/rot = -20.0
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -7, -10 )
+region = true
+region_rect = Rect2( 110, 55, 15, 25 )
+__meta__ = { "_edit_bone_":true, "_editor_collapsed":true }
+
+[node name="front_leg_2" type="Sprite" parent="fox_body/body_main/front_leg_1"]
+
+transform/pos = Vector2( 0, 8 )
+transform/rot = -40.0
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -7, -8 )
+region = true
+region_rect = Rect2( 110, 80, 30, 15 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="front_leg_3" type="Sprite" parent="fox_body/body_main/front_leg_1/front_leg_2"]
+
+transform/pos = Vector2( 17.9792, 0.18622 )
+transform/rot = 120.0
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -5.09217, -8.1811 )
+region = true
+region_rect = Rect2( 130, 55, 10, 25 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="front_leg_4" type="Sprite" parent="fox_body/body_main/front_leg_1/front_leg_2/front_leg_3"]
+
+transform/pos = Vector2( 0.28062, 10.1239 )
+transform/rot = 30.0
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -5, -5 )
+region = true
+region_rect = Rect2( 140, 80, 10, 15 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="Position2D" type="Position2D" parent="fox_body/body_main/front_leg_1/front_leg_2/front_leg_3/front_leg_4"]
+
+transform/pos = Vector2( -0.208929, 4.29184 )
+transform/scale = Vector2( 0.2, 0.2 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="body_back" type="Sprite" parent="fox_body/body_main"]
+
+transform/pos = Vector2( -23, -5 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -20, -15 )
+region = true
+region_rect = Rect2( 5, 15, 35, 35 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="back_leg_1" type="Sprite" parent="fox_body/body_main/body_back"]
+
+transform/pos = Vector2( -6.27743, 6.66226 )
+transform/scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -12, -13 )
+region = true
+region_rect = Rect2( 50, 55, 25, 35 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="back_leg_2" type="Sprite" parent="fox_body/body_main/body_back/back_leg_1"]
+
+transform/pos = Vector2( -1.53391, 13.3284 )
+transform/rot = -40.0
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -11, -11 )
+region = true
+region_rect = Rect2( 25, 60, 20, 30 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="back_leg_3" type="Sprite" parent="fox_body/body_main/body_back/back_leg_1/back_leg_2"]
+
+transform/pos = Vector2( -0.390737, 13.3513 )
+transform/rot = 60.0
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -6, -6 )
+region = true
+region_rect = Rect2( 55, 90, 15, 25 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="back_leg_4" type="Sprite" parent="fox_body/body_main/body_back/back_leg_1/back_leg_2/back_leg_3"]
+
+transform/pos = Vector2( -0.422777, 11.3939 )
+transform/rot = -20.0
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -5, -8 )
+region = true
+region_rect = Rect2( 30, 90, 15, 15 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="Position2D" type="Position2D" parent="fox_body/body_main/body_back/back_leg_1/back_leg_2/back_leg_3/back_leg_4"]
+
+transform/pos = Vector2( 6.19305, 0.181452 )
+transform/scale = Vector2( 0.2, 0.2 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="Particles2D" type="Particles2D" parent="fox_body"]
+
+transform/pos = Vector2( -13, -12 )
+transform/rot = 180.0
+config/amount = 10
+config/lifetime = 0.3
+config/texture = ExtResource( 3 )
+config/h_frames = 10
+params/direction = 90.0
+params/spread = 0.0
+params/linear_velocity = 200.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 10.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+script/script = ExtResource( 4 )
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
 

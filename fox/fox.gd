@@ -16,7 +16,6 @@ var contact_count_old
 
 var jumps_left = 2
 var time = 0.0
-var jump_mode = false
 
 func _integrate_forces(state):
 	
@@ -34,11 +33,9 @@ func _integrate_forces(state):
 	
 	var current_velocity = state.get_linear_velocity()
 	if (contact_count == 1) and (contact_count_old == 0):
-#		jump_mode = false
 		jumps_left = 2
 	
 	if button_jump and (button_jump_old == false) and jumps_left: # first jump button press
-#		jump_mode = true
 		current_velocity.y = speed_y
 		button_jump_old = button_jump
 		jumps_left -= 1
