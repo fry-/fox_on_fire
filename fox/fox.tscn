@@ -1,15 +1,683 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://fox/fox.gd" type="Script" id=1]
 [ext_resource path="res://fox/fox.png" type="Texture" id=2]
 [ext_resource path="res://fox/fox_tail.png" type="Texture" id=3]
 [ext_resource path="res://fox/tail.gd" type="Script" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 16.0
-height = 16.0
+radius = 32.0
+height = 32.0
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "basic"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body_main/head:transform/pos")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("body_main/head:transform/rot")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("body_main:transform/pos")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 20, -16 ), Vector2( 20, -16 ) ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("body_main:transform/rot")
+tracks/3/interp = 1
+tracks/3/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3/back_leg_4:transform/pos")
+tracks/4/interp = 1
+tracks/4/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 2.23517e-07, 30 ), Vector2( 2.23517e-07, 30 ), Vector2( -2.28882e-05, 30.0002 ), Vector2( -2.28882e-05, 30.0002 ) ] }
+tracks/5/type = "value"
+tracks/5/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3/back_leg_4:transform/rot")
+tracks/5/interp = 1
+tracks/5/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0.0, 0.0, -18.0532, -18.0532 ] }
+tracks/6/type = "value"
+tracks/6/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3:transform/pos")
+tracks/6/interp = 1
+tracks/6/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -0.0247002, 41.9753 ), Vector2( -0.0247002, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ) ] }
+tracks/7/type = "value"
+tracks/7/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3:transform/rot")
+tracks/7/interp = 1
+tracks/7/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0.0, 0.0, 63.4047, 63.4047 ] }
+tracks/8/type = "value"
+tracks/8/path = NodePath("body_main/body_back/back_leg_1/back_leg_2:transform/pos")
+tracks/8/interp = 1
+tracks/8/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 0, 21 ), Vector2( 0, 21 ), Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ) ] }
+tracks/9/type = "value"
+tracks/9/path = NodePath("body_main/body_back/back_leg_1/back_leg_2:transform/rot")
+tracks/9/interp = 1
+tracks/9/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0.0, 0.0, -44.2135, -44.2135 ] }
+tracks/10/type = "value"
+tracks/10/path = NodePath("body_main/body_back/back_leg_1:transform/pos")
+tracks/10/interp = 1
+tracks/10/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ) ] }
+tracks/11/type = "value"
+tracks/11/path = NodePath("body_main/body_back/back_leg_1:transform/rot")
+tracks/11/interp = 1
+tracks/11/keys = { "cont":true, "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0.0, 0.0, -1.13799, -1.13799 ] }
+tracks/12/type = "value"
+tracks/12/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3/front_leg_4:transform/pos")
+tracks/12/interp = 1
+tracks/12/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -1.90735e-05, 20 ), Vector2( -1.90735e-05, 20 ) ] }
+tracks/13/type = "value"
+tracks/13/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3/front_leg_4:transform/rot")
+tracks/13/interp = 1
+tracks/13/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ -1.19528e-05, -1.19528e-05 ] }
+tracks/14/type = "value"
+tracks/14/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3:transform/pos")
+tracks/14/interp = 1
+tracks/14/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 37 ), Vector2( 0, 37 ) ] }
+tracks/15/type = "value"
+tracks/15/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3:transform/rot")
+tracks/15/interp = 1
+tracks/15/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.19528e-05, 1.19528e-05 ] }
+tracks/16/type = "value"
+tracks/16/path = NodePath("body_main/front_leg_1/front_leg_2:transform/pos")
+tracks/16/interp = 1
+tracks/16/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 18 ), Vector2( 0, 18 ) ] }
+tracks/17/type = "value"
+tracks/17/path = NodePath("body_main/front_leg_1/front_leg_2:transform/rot")
+tracks/17/interp = 1
+tracks/17/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/18/type = "value"
+tracks/18/path = NodePath("body_main/front_leg_1:transform/pos")
+tracks/18/interp = 1
+tracks/18/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/19/type = "value"
+tracks/19/path = NodePath("body_main/front_leg_1:transform/rot")
+tracks/19/interp = 1
+tracks/19/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/20/type = "value"
+tracks/20/path = NodePath("body_main/body_back:transform/pos")
+tracks/20/interp = 1
+tracks/20/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -45, -9.99998 ), Vector2( -45, -9.99998 ) ] }
+tracks/21/type = "value"
+tracks/21/path = NodePath("body_main/body_back:transform/rot")
+tracks/21/interp = 1
+tracks/21/keys = { "cont":true, "times":FloatArray( 0, 0.1 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/22/type = "value"
+tracks/22/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3/back_leg_4:transform/pos")
+tracks/22/interp = 1
+tracks/22/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -2.28882e-05, 30.0002 ), Vector2( -2.28882e-05, 30.0002 ) ] }
+tracks/23/type = "value"
+tracks/23/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3/back_leg_4:transform/rot")
+tracks/23/interp = 1
+tracks/23/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ -18.0532, -18.0532 ] }
+tracks/24/type = "value"
+tracks/24/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3:transform/pos")
+tracks/24/interp = 1
+tracks/24/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ) ] }
+tracks/25/type = "value"
+tracks/25/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3:transform/rot")
+tracks/25/interp = 1
+tracks/25/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ 63.4047, 63.4047 ] }
+tracks/26/type = "value"
+tracks/26/path = NodePath("body_main/body_back/back_leg_2/back_leg_2:transform/pos")
+tracks/26/interp = 1
+tracks/26/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ) ] }
+tracks/27/type = "value"
+tracks/27/path = NodePath("body_main/body_back/back_leg_2/back_leg_2:transform/rot")
+tracks/27/interp = 1
+tracks/27/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ -44.2135, -44.2135 ] }
+tracks/28/type = "value"
+tracks/28/path = NodePath("body_main/body_back/back_leg_2:transform/pos")
+tracks/28/interp = 1
+tracks/28/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ) ] }
+tracks/29/type = "value"
+tracks/29/path = NodePath("body_main/body_back/back_leg_2:transform/rot")
+tracks/29/interp = 1
+tracks/29/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ -1.13799, -1.13799 ] }
+tracks/30/type = "value"
+tracks/30/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3/front_leg_4:transform/pos")
+tracks/30/interp = 1
+tracks/30/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -1.90735e-05, 20 ), Vector2( -1.90735e-05, 20 ) ] }
+tracks/31/type = "value"
+tracks/31/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3/front_leg_4:transform/rot")
+tracks/31/interp = 1
+tracks/31/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ -1.19528e-05, -1.19528e-05 ] }
+tracks/32/type = "value"
+tracks/32/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3:transform/pos")
+tracks/32/interp = 1
+tracks/32/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 37 ), Vector2( 0, 37 ) ] }
+tracks/33/type = "value"
+tracks/33/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3:transform/rot")
+tracks/33/interp = 1
+tracks/33/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.19528e-05, 1.19528e-05 ] }
+tracks/34/type = "value"
+tracks/34/path = NodePath("body_main/front_leg_2/front_leg_2:transform/pos")
+tracks/34/interp = 1
+tracks/34/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 18 ), Vector2( 0, 18 ) ] }
+tracks/35/type = "value"
+tracks/35/path = NodePath("body_main/front_leg_2/front_leg_2:transform/rot")
+tracks/35/interp = 1
+tracks/35/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/36/type = "value"
+tracks/36/path = NodePath("body_main/front_leg_2:transform/pos")
+tracks/36/interp = 1
+tracks/36/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/37/type = "value"
+tracks/37/path = NodePath("body_main/front_leg_2:transform/rot")
+tracks/37/interp = 1
+tracks/37/keys = { "cont":true, "times":FloatArray( 0.2, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/38/type = "value"
+tracks/38/path = NodePath("body_main/body_back/Particles2D:transform/rot")
+tracks/38/interp = 1
+tracks/38/keys = { "cont":true, "times":FloatArray( 0.3 ), "transitions":FloatArray( 1 ), "values":[ 180.0 ] }
+tracks/39/type = "value"
+tracks/39/path = NodePath("body_main/body_back/Particles2D:transform/pos")
+tracks/39/interp = 1
+tracks/39/keys = { "cont":true, "times":FloatArray( 0.3 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -15, 0 ) ] }
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "fly"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3/back_leg_4:transform/pos")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 2.28882e-05, 30.0002 ), Vector2( 3.05176e-05, 30.0002 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3/back_leg_4:transform/rot")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ -103.079, -118.624 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3:transform/pos")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ) ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3:transform/rot")
+tracks/3/interp = 1
+tracks/3/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 35.2337, 45.3394 ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("body_main/body_back/back_leg_1/back_leg_2:transform/pos")
+tracks/4/interp = 1
+tracks/4/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -3.8147e-06, 21 ), Vector2( -3.8147e-06, 21 ) ] }
+tracks/5/type = "value"
+tracks/5/path = NodePath("body_main/body_back/back_leg_1/back_leg_2:transform/rot")
+tracks/5/interp = 1
+tracks/5/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ -16.1209, -8.98777 ] }
+tracks/6/type = "value"
+tracks/6/path = NodePath("body_main/body_back/back_leg_1:transform/pos")
+tracks/6/interp = 1
+tracks/6/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ) ] }
+tracks/7/type = "value"
+tracks/7/path = NodePath("body_main/body_back/back_leg_1:transform/rot")
+tracks/7/interp = 1
+tracks/7/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ -43.0467, -44.7406 ] }
+tracks/8/type = "value"
+tracks/8/path = NodePath("body_main/body_back:transform/pos")
+tracks/8/interp = 1
+tracks/8/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -45, -9.99998 ), Vector2( -45, -9.99998 ) ] }
+tracks/9/type = "value"
+tracks/9/path = NodePath("body_main/body_back:transform/rot")
+tracks/9/interp = 1
+tracks/9/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ -24.7395, -23.2094 ] }
+tracks/10/type = "value"
+tracks/10/path = NodePath("body_main:transform/pos")
+tracks/10/interp = 1
+tracks/10/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 20, -16 ), Vector2( 20, -16 ) ] }
+tracks/11/type = "value"
+tracks/11/path = NodePath("body_main:transform/rot")
+tracks/11/interp = 1
+tracks/11/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 6.68917, 5.15909 ] }
+tracks/12/type = "value"
+tracks/12/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3/front_leg_4:transform/pos")
+tracks/12/interp = 1
+tracks/12/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -1.33514e-05, 20.0001 ), Vector2( -2.95639e-05, 20.0001 ) ] }
+tracks/13/type = "value"
+tracks/13/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3/front_leg_4:transform/rot")
+tracks/13/interp = 1
+tracks/13/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ -66.9436, -58.7331 ] }
+tracks/14/type = "value"
+tracks/14/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3:transform/pos")
+tracks/14/interp = 1
+tracks/14/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 1.14441e-05, 37 ), Vector2( 1.14441e-05, 37 ) ] }
+tracks/15/type = "value"
+tracks/15/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3:transform/rot")
+tracks/15/interp = 1
+tracks/15/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 7.3578, 8.42311 ] }
+tracks/16/type = "value"
+tracks/16/path = NodePath("body_main/front_leg_1/front_leg_2:transform/pos")
+tracks/16/interp = 1
+tracks/16/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 18 ), Vector2( 0, 18 ) ] }
+tracks/17/type = "value"
+tracks/17/path = NodePath("body_main/front_leg_1/front_leg_2:transform/rot")
+tracks/17/interp = 1
+tracks/17/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 4.3836, 3.90224 ] }
+tracks/18/type = "value"
+tracks/18/path = NodePath("body_main/front_leg_1:transform/pos")
+tracks/18/interp = 1
+tracks/18/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/19/type = "value"
+tracks/19/path = NodePath("body_main/front_leg_1:transform/rot")
+tracks/19/interp = 1
+tracks/19/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 44.6032, 49.8514 ] }
+tracks/20/type = "value"
+tracks/20/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3/back_leg_4:transform/pos")
+tracks/20/interp = 1
+tracks/20/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -0.000160217, 30.0004 ), Vector2( -6.86646e-05, 30.0003 ) ] }
+tracks/21/type = "value"
+tracks/21/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3/back_leg_4:transform/rot")
+tracks/21/interp = 1
+tracks/21/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ -103.155, -112.719 ] }
+tracks/22/type = "value"
+tracks/22/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3:transform/pos")
+tracks/22/interp = 1
+tracks/22/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ) ] }
+tracks/23/type = "value"
+tracks/23/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3:transform/rot")
+tracks/23/interp = 1
+tracks/23/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 38.5455, 45.8668 ] }
+tracks/24/type = "value"
+tracks/24/path = NodePath("body_main/body_back/back_leg_2/back_leg_2:transform/pos")
+tracks/24/interp = 1
+tracks/24/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 2.28882e-05, 21 ), Vector2( 2.28882e-05, 21 ) ] }
+tracks/25/type = "value"
+tracks/25/path = NodePath("body_main/body_back/back_leg_2/back_leg_2:transform/rot")
+tracks/25/interp = 1
+tracks/25/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ -24.5056, -9.76266 ] }
+tracks/26/type = "value"
+tracks/26/path = NodePath("body_main/body_back/back_leg_2:transform/pos")
+tracks/26/interp = 1
+tracks/26/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ) ] }
+tracks/27/type = "value"
+tracks/27/path = NodePath("body_main/body_back/back_leg_2:transform/rot")
+tracks/27/interp = 1
+tracks/27/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ -47.7155, -60.2156 ] }
+tracks/28/type = "value"
+tracks/28/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3/front_leg_4:transform/pos")
+tracks/28/interp = 1
+tracks/28/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -3.8147e-06, 20 ), Vector2( 0, 20.0001 ) ] }
+tracks/29/type = "value"
+tracks/29/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3/front_leg_4:transform/rot")
+tracks/29/interp = 1
+tracks/29/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ -57.7673, -50.5145 ] }
+tracks/30/type = "value"
+tracks/30/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3:transform/pos")
+tracks/30/interp = 1
+tracks/30/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 37 ), Vector2( 0, 37 ) ] }
+tracks/31/type = "value"
+tracks/31/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3:transform/rot")
+tracks/31/interp = 1
+tracks/31/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ -1.36105, -3.51929 ] }
+tracks/32/type = "value"
+tracks/32/path = NodePath("body_main/front_leg_2/front_leg_2:transform/pos")
+tracks/32/interp = 1
+tracks/32/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 18 ), Vector2( 0, 18 ) ] }
+tracks/33/type = "value"
+tracks/33/path = NodePath("body_main/front_leg_2/front_leg_2:transform/rot")
+tracks/33/interp = 1
+tracks/33/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 2.78469, 2.93343 ] }
+tracks/34/type = "value"
+tracks/34/path = NodePath("body_main/front_leg_2:transform/pos")
+tracks/34/interp = 1
+tracks/34/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/35/type = "value"
+tracks/35/path = NodePath("body_main/front_leg_2:transform/rot")
+tracks/35/interp = 1
+tracks/35/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 56.5402, 62.8994 ] }
+tracks/36/type = "value"
+tracks/36/path = NodePath("body_main/head:transform/pos")
+tracks/36/interp = 1
+tracks/36/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/37/type = "value"
+tracks/37/path = NodePath("body_main/head:transform/rot")
+tracks/37/interp = 1
+tracks/37/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ -25.3155, -18.9333 ] }
+tracks/38/type = "value"
+tracks/38/path = NodePath("body_main/body_back/Particles2D:transform/pos")
+tracks/38/interp = 1
+tracks/38/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -15, 0 ), Vector2( -15, 0 ) ] }
+tracks/39/type = "value"
+tracks/39/path = NodePath("body_main/body_back/Particles2D:transform/rot")
+tracks/39/interp = 1
+tracks/39/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 200.0, 190.0 ] }
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "jump"
+length = 0.2
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("body_main/head:transform/pos")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("body_main/head:transform/rot")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0.0, -15.344, -25.3155, -25.3155 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("body_main:transform/pos")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 20, -16 ), Vector2( 20, -16 ), Vector2( 20, -16 ), Vector2( 20, -16 ) ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("body_main:transform/rot")
+tracks/3/interp = 1
+tracks/3/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0.0, 10.5192, 6.68917, 6.68917 ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3/front_leg_4:transform/pos")
+tracks/4/interp = 1
+tracks/4/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -1.52588e-05, 20.0001 ), Vector2( -1.90735e-05, 20.0001 ), Vector2( 3.8147e-06, 20.0001 ), Vector2( -1.33514e-05, 20.0001 ) ] }
+tracks/5/type = "value"
+tracks/5/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3/front_leg_4:transform/rot")
+tracks/5/interp = 1
+tracks/5/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ -79.7768, -38.1561, -55.2579, -66.9436 ] }
+tracks/6/type = "value"
+tracks/6/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3:transform/pos")
+tracks/6/interp = 1
+tracks/6/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 0, 37 ), Vector2( 0, 37 ), Vector2( 1.14441e-05, 37 ), Vector2( 1.14441e-05, 37 ) ] }
+tracks/7/type = "value"
+tracks/7/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3:transform/rot")
+tracks/7/interp = 1
+tracks/7/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ -77.8172, -7.47816, 6.08869, 7.3578 ] }
+tracks/8/type = "value"
+tracks/8/path = NodePath("body_main/front_leg_1/front_leg_2:transform/pos")
+tracks/8/interp = 1
+tracks/8/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ) ] }
+tracks/9/type = "value"
+tracks/9/path = NodePath("body_main/front_leg_1/front_leg_2:transform/rot")
+tracks/9/interp = 1
+tracks/9/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 8.02654, -3.45083, -35.6357, 4.3836 ] }
+tracks/10/type = "value"
+tracks/10/path = NodePath("body_main/front_leg_1:transform/pos")
+tracks/10/interp = 1
+tracks/10/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/11/type = "value"
+tracks/11/path = NodePath("body_main/front_leg_1:transform/rot")
+tracks/11/interp = 1
+tracks/11/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 60.6781, 42.4175, 45.7655, 44.6032 ] }
+tracks/12/type = "value"
+tracks/12/path = NodePath("body_main/body_back:transform/pos")
+tracks/12/interp = 1
+tracks/12/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -45, -9.99998 ), Vector2( -45, -9.99998 ), Vector2( -45, -9.99998 ), Vector2( -45, -9.99998 ) ] }
+tracks/13/type = "value"
+tracks/13/path = NodePath("body_main/body_back:transform/rot")
+tracks/13/interp = 1
+tracks/13/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 0.0, -10.5192, -24.7395, -24.7395 ] }
+tracks/14/type = "value"
+tracks/14/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3/back_leg_4:transform/pos")
+tracks/14/interp = 1
+tracks/14/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -2.28882e-05, 30.0002 ), Vector2( 7.62939e-06, 30.0003 ), Vector2( 6.10352e-05, 30.0002 ), Vector2( 2.28882e-05, 30.0002 ) ] }
+tracks/15/type = "value"
+tracks/15/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3/back_leg_4:transform/rot")
+tracks/15/interp = 1
+tracks/15/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ -40.9203, -17.3567, -99.6876, -103.079 ] }
+tracks/16/type = "value"
+tracks/16/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3:transform/pos")
+tracks/16/interp = 1
+tracks/16/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ) ] }
+tracks/17/type = "value"
+tracks/17/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3:transform/rot")
+tracks/17/interp = 1
+tracks/17/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 73.5016, 60.6109, 44.9142, 35.2337 ] }
+tracks/18/type = "value"
+tracks/18/path = NodePath("body_main/body_back/back_leg_1/back_leg_2:transform/pos")
+tracks/18/interp = 1
+tracks/18/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ), Vector2( -3.8147e-06, 21 ), Vector2( -3.8147e-06, 21 ) ] }
+tracks/19/type = "value"
+tracks/19/path = NodePath("body_main/body_back/back_leg_1/back_leg_2:transform/rot")
+tracks/19/interp = 1
+tracks/19/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ -29.7806, -74.4621, -13.8187, -16.1209 ] }
+tracks/20/type = "value"
+tracks/20/path = NodePath("body_main/body_back/back_leg_1:transform/pos")
+tracks/20/interp = 1
+tracks/20/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ) ] }
+tracks/21/type = "value"
+tracks/21/path = NodePath("body_main/body_back/back_leg_1:transform/rot")
+tracks/21/interp = 1
+tracks/21/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ -2.80068, 6.8864, -43.8313, -43.0467 ] }
+tracks/22/type = "value"
+tracks/22/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3/front_leg_4:transform/pos")
+tracks/22/interp = 1
+tracks/22/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -1.52588e-05, 20 ), Vector2( 1.52588e-05, 20 ), Vector2( 3.8147e-06, 20 ), Vector2( -3.8147e-06, 20 ) ] }
+tracks/23/type = "value"
+tracks/23/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3/front_leg_4:transform/rot")
+tracks/23/interp = 1
+tracks/23/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ -78.3007, -140.076, -98.4213, -57.7673 ] }
+tracks/24/type = "value"
+tracks/24/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3:transform/pos")
+tracks/24/interp = 1
+tracks/24/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 0, 37 ), Vector2( 0, 37 ), Vector2( 0, 37 ), Vector2( 0, 37 ) ] }
+tracks/25/type = "value"
+tracks/25/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3:transform/rot")
+tracks/25/interp = 1
+tracks/25/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ -100.803, -81.6293, 28.3211, -1.36105 ] }
+tracks/26/type = "value"
+tracks/26/path = NodePath("body_main/front_leg_2/front_leg_2:transform/pos")
+tracks/26/interp = 1
+tracks/26/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ) ] }
+tracks/27/type = "value"
+tracks/27/path = NodePath("body_main/front_leg_2/front_leg_2:transform/rot")
+tracks/27/interp = 1
+tracks/27/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ -46.9466, -1.60753, -36.1485, 2.78469 ] }
+tracks/28/type = "value"
+tracks/28/path = NodePath("body_main/front_leg_2:transform/pos")
+tracks/28/interp = 1
+tracks/28/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/29/type = "value"
+tracks/29/path = NodePath("body_main/front_leg_2:transform/rot")
+tracks/29/interp = 1
+tracks/29/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 55.0606, 52.3229, 66.9479, 56.5402 ] }
+tracks/30/type = "value"
+tracks/30/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3/back_leg_4:transform/pos")
+tracks/30/interp = 1
+tracks/30/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -7.62939e-05, 30.0003 ), Vector2( -8.7738e-05, 30.0003 ), Vector2( -7.62939e-05, 30.0003 ), Vector2( -0.000160217, 30.0004 ) ] }
+tracks/31/type = "value"
+tracks/31/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3/back_leg_4:transform/rot")
+tracks/31/interp = 1
+tracks/31/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ -25.6767, -68.3495, -90.0355, -103.155 ] }
+tracks/32/type = "value"
+tracks/32/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3:transform/pos")
+tracks/32/interp = 1
+tracks/32/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ) ] }
+tracks/33/type = "value"
+tracks/33/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3:transform/rot")
+tracks/33/interp = 1
+tracks/33/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 40.7618, 25.529, 32.94, 38.5455 ] }
+tracks/34/type = "value"
+tracks/34/path = NodePath("body_main/body_back/back_leg_2/back_leg_2:transform/pos")
+tracks/34/interp = 1
+tracks/34/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ), Vector2( 2.28882e-05, 21 ) ] }
+tracks/35/type = "value"
+tracks/35/path = NodePath("body_main/body_back/back_leg_2/back_leg_2:transform/rot")
+tracks/35/interp = 1
+tracks/35/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ -9.33556, -9.1791, 4.61365, -24.5056 ] }
+tracks/36/type = "value"
+tracks/36/path = NodePath("body_main/body_back/back_leg_2:transform/pos")
+tracks/36/interp = 1
+tracks/36/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ) ] }
+tracks/37/type = "value"
+tracks/37/path = NodePath("body_main/body_back/back_leg_2:transform/rot")
+tracks/37/interp = 1
+tracks/37/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ -40.2104, -71.5493, -71.0671, -47.7155 ] }
+tracks/38/type = "value"
+tracks/38/path = NodePath("body_main/body_back/Particles2D:transform/pos")
+tracks/38/interp = 1
+tracks/38/keys = { "cont":true, "times":FloatArray( 0.05 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -15, 0 ) ] }
+tracks/39/type = "value"
+tracks/39/path = NodePath("body_main/body_back/Particles2D:transform/rot")
+tracks/39/interp = 1
+tracks/39/keys = { "cont":true, "times":FloatArray( 0.05, 0.1, 0.15, 0.2 ), "transitions":FloatArray( 1, 1, 1, 1 ), "values":[ 180.0, 180.0, 200.0, 200.0 ] }
+
+[sub_resource type="Animation" id=5]
+
+length = 0.8
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("body_main/head:transform/pos")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("body_main/head:transform/rot")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ 0.0, -15.344, -25.3155, -25.3155, -6.25133, 13.597, 11.7725, 0.00936165 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("body_main:transform/pos")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( 20, -16 ), Vector2( 20, -16 ), Vector2( 20, -16 ), Vector2( 20, -16 ), Vector2( 20, -16 ), Vector2( 20, -16 ), Vector2( 20, -16 ), Vector2( 20, -16 ) ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("body_main:transform/rot")
+tracks/3/interp = 1
+tracks/3/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ 0.0, 10.5192, 6.68917, 6.68917, -9.4814, -20.8654, -10.2346, -0.657615 ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3/front_leg_4:transform/pos")
+tracks/4/interp = 1
+tracks/4/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( -1.52588e-05, 20.0001 ), Vector2( -1.90735e-05, 20.0001 ), Vector2( 3.8147e-06, 20.0001 ), Vector2( 1.07288e-05, 20.0001 ), Vector2( 1.23978e-05, 20.0001 ), Vector2( 2.28882e-05, 20.0001 ), Vector2( 5.72205e-06, 20.0001 ), Vector2( 3.8147e-06, 20.0001 ) ] }
+tracks/5/type = "value"
+tracks/5/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3/front_leg_4:transform/rot")
+tracks/5/interp = 1
+tracks/5/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ -79.7768, -38.1561, -55.2579, -32.0054, -62.3046, -59.5551, -87.4834, -84.0482 ] }
+tracks/6/type = "value"
+tracks/6/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3:transform/pos")
+tracks/6/interp = 1
+tracks/6/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( 0, 37 ), Vector2( 0, 37 ), Vector2( 1.14441e-05, 37 ), Vector2( 1.14441e-05, 37 ), Vector2( 1.14441e-05, 37 ), Vector2( 1.14441e-05, 37 ), Vector2( 1.14441e-05, 37 ), Vector2( 1.14441e-05, 37 ) ] }
+tracks/7/type = "value"
+tracks/7/path = NodePath("body_main/front_leg_1/front_leg_2/front_leg_3:transform/rot")
+tracks/7/interp = 1
+tracks/7/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ -77.8172, -7.47816, 6.08869, 28.15, 5.0481, -51.4683, -20.1454, -117.174 ] }
+tracks/8/type = "value"
+tracks/8/path = NodePath("body_main/front_leg_1/front_leg_2:transform/pos")
+tracks/8/interp = 1
+tracks/8/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ) ] }
+tracks/9/type = "value"
+tracks/9/path = NodePath("body_main/front_leg_1/front_leg_2:transform/rot")
+tracks/9/interp = 1
+tracks/9/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ 8.02654, -3.45083, -35.6357, -5.71393, 0.925511, 18.3079, -9.48497, 53.6219 ] }
+tracks/10/type = "value"
+tracks/10/path = NodePath("body_main/front_leg_1:transform/pos")
+tracks/10/interp = 1
+tracks/10/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/11/type = "value"
+tracks/11/path = NodePath("body_main/front_leg_1:transform/rot")
+tracks/11/interp = 1
+tracks/11/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ 60.6781, 42.4175, 45.7655, -19.7428, -16.024, -22.1582, -19.0714, -8.69878 ] }
+tracks/12/type = "value"
+tracks/12/path = NodePath("body_main/body_back:transform/pos")
+tracks/12/interp = 1
+tracks/12/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( -45, -9.99998 ), Vector2( -45, -9.99998 ), Vector2( -45, -9.99998 ), Vector2( -45, -9.99998 ), Vector2( -45, -10 ), Vector2( -45, -10 ), Vector2( -45, -10 ), Vector2( -45, -10 ) ] }
+tracks/13/type = "value"
+tracks/13/path = NodePath("body_main/body_back:transform/rot")
+tracks/13/interp = 1
+tracks/13/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ 0.0, -10.5192, -24.7395, -24.7395, -8.56888, 2.81512, 10.9031, 2.63696 ] }
+tracks/14/type = "value"
+tracks/14/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3/back_leg_4:transform/pos")
+tracks/14/interp = 1
+tracks/14/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( -2.28882e-05, 30.0002 ), Vector2( 7.62939e-06, 30.0003 ), Vector2( 6.10352e-05, 30.0002 ), Vector2( 5.34058e-05, 30.0002 ), Vector2( 7.62939e-06, 30.0002 ), Vector2( 3.05176e-05, 30.0002 ), Vector2( 1.14441e-05, 30.0002 ), Vector2( 0, 30.0003 ) ] }
+tracks/15/type = "value"
+tracks/15/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3/back_leg_4:transform/rot")
+tracks/15/interp = 1
+tracks/15/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ -40.9203, -17.3567, -99.6876, -109.688, -107.844, -120.61, -54.2888, -45.4763 ] }
+tracks/16/type = "value"
+tracks/16/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3:transform/pos")
+tracks/16/interp = 1
+tracks/16/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ) ] }
+tracks/17/type = "value"
+tracks/17/path = NodePath("body_main/body_back/back_leg_1/back_leg_2/back_leg_3:transform/rot")
+tracks/17/interp = 1
+tracks/17/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ 73.5016, 60.6109, 44.9142, 62.2524, 83.242, 93.8448, 46.5507, 43.1138 ] }
+tracks/18/type = "value"
+tracks/18/path = NodePath("body_main/body_back/back_leg_1/back_leg_2:transform/pos")
+tracks/18/interp = 1
+tracks/18/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ), Vector2( -3.8147e-06, 21 ), Vector2( -3.8147e-06, 21 ), Vector2( -3.8147e-06, 21 ), Vector2( -3.8147e-06, 21 ), Vector2( -3.8147e-06, 21 ), Vector2( -3.8147e-06, 21 ) ] }
+tracks/19/type = "value"
+tracks/19/path = NodePath("body_main/body_back/back_leg_1/back_leg_2:transform/rot")
+tracks/19/interp = 1
+tracks/19/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ -29.7806, -74.4621, -13.8187, -23.4192, -53.0041, -70.9073, -12.8612, -42.1294 ] }
+tracks/20/type = "value"
+tracks/20/path = NodePath("body_main/body_back/back_leg_1:transform/pos")
+tracks/20/interp = 1
+tracks/20/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ) ] }
+tracks/21/type = "value"
+tracks/21/path = NodePath("body_main/body_back/back_leg_1:transform/rot")
+tracks/21/interp = 1
+tracks/21/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ -2.80068, 6.8864, -43.8313, -41.5689, -7.30069, 43.7672, 18.5256, 42.4183 ] }
+tracks/22/type = "value"
+tracks/22/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3/front_leg_4:transform/pos")
+tracks/22/interp = 1
+tracks/22/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( -1.52588e-05, 20 ), Vector2( 1.52588e-05, 20 ), Vector2( 3.8147e-06, 20 ), Vector2( -5.72205e-06, 20 ), Vector2( -2.95639e-05, 20 ), Vector2( -2.57492e-05, 20.0001 ), Vector2( -1.90735e-05, 20.0001 ), Vector2( -3.24249e-05, 20.0001 ) ] }
+tracks/23/type = "value"
+tracks/23/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3/front_leg_4:transform/rot")
+tracks/23/interp = 1
+tracks/23/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ -78.3007, -140.076, -98.4213, -43.4261, -20.1632, -11.7611, -80.6609, -67.7274 ] }
+tracks/24/type = "value"
+tracks/24/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3:transform/pos")
+tracks/24/interp = 1
+tracks/24/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( 0, 37 ), Vector2( 0, 37 ), Vector2( 0, 37 ), Vector2( 0, 37 ), Vector2( 0, 37 ), Vector2( 0, 37 ), Vector2( 0, 37 ), Vector2( 0, 37 ) ] }
+tracks/25/type = "value"
+tracks/25/path = NodePath("body_main/front_leg_2/front_leg_2/front_leg_3:transform/rot")
+tracks/25/interp = 1
+tracks/25/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ -100.803, -81.6293, 28.3211, 20.8378, 7.55605, 13.0135, -58.6299, -40.165 ] }
+tracks/26/type = "value"
+tracks/26/path = NodePath("body_main/front_leg_2/front_leg_2:transform/pos")
+tracks/26/interp = 1
+tracks/26/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 18 ) ] }
+tracks/27/type = "value"
+tracks/27/path = NodePath("body_main/front_leg_2/front_leg_2:transform/rot")
+tracks/27/interp = 1
+tracks/27/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ -46.9466, -1.60753, -36.1485, -3.65164, 2.71634, -10.6643, -6.38015, -23.2445 ] }
+tracks/28/type = "value"
+tracks/28/path = NodePath("body_main/front_leg_2:transform/pos")
+tracks/28/interp = 1
+tracks/28/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ] }
+tracks/29/type = "value"
+tracks/29/path = NodePath("body_main/front_leg_2:transform/rot")
+tracks/29/interp = 1
+tracks/29/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ 55.0606, 52.3229, 66.9479, 31.7353, 15.3862, 14.9073, 4.72353, -9.81046 ] }
+tracks/30/type = "value"
+tracks/30/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3/back_leg_4:transform/pos")
+tracks/30/interp = 1
+tracks/30/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( -7.62939e-05, 30.0003 ), Vector2( -8.7738e-05, 30.0003 ), Vector2( -7.62939e-05, 30.0003 ), Vector2( -9.15527e-05, 30.0003 ), Vector2( -9.53674e-05, 30.0003 ), Vector2( -0.000108719, 30.0003 ), Vector2( -0.000104904, 30.0003 ), Vector2( -0.000282288, 30.0007 ) ] }
+tracks/31/type = "value"
+tracks/31/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3/back_leg_4:transform/rot")
+tracks/31/interp = 1
+tracks/31/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ -25.6767, -68.3495, -90.0355, -113.739, -123.896, -120.628, -82.4651, -19.4542 ] }
+tracks/32/type = "value"
+tracks/32/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3:transform/pos")
+tracks/32/interp = 1
+tracks/32/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247078, 41.9753 ), Vector2( -0.0247345, 41.9753 ) ] }
+tracks/33/type = "value"
+tracks/33/path = NodePath("body_main/body_back/back_leg_2/back_leg_2/back_leg_3:transform/rot")
+tracks/33/interp = 1
+tracks/33/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ 40.7618, 25.529, 32.94, 84.5134, 125.467, 111.613, 93.6781, 63.7284 ] }
+tracks/34/type = "value"
+tracks/34/path = NodePath("body_main/body_back/back_leg_2/back_leg_2:transform/pos")
+tracks/34/interp = 1
+tracks/34/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ), Vector2( 1.52588e-05, 21 ), Vector2( 2.28882e-05, 21 ) ] }
+tracks/35/type = "value"
+tracks/35/path = NodePath("body_main/body_back/back_leg_2/back_leg_2:transform/rot")
+tracks/35/interp = 1
+tracks/35/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ -9.33556, -9.1791, 4.61365, 13.2438, -82.4368, -69.3459, -76.2052, -47.383 ] }
+tracks/36/type = "value"
+tracks/36/path = NodePath("body_main/body_back/back_leg_2:transform/pos")
+tracks/36/interp = 1
+tracks/36/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ), Vector2( -15, 5.99998 ) ] }
+tracks/37/type = "value"
+tracks/37/path = NodePath("body_main/body_back/back_leg_2:transform/rot")
+tracks/37/interp = 1
+tracks/37/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ -40.2104, -71.5493, -71.0671, -69.5732, 27.7085, 66.0419, 65.0315, 3.14813 ] }
+tracks/38/type = "value"
+tracks/38/path = NodePath("body_main/body_back/Particles2D:transform/pos")
+tracks/38/interp = 1
+tracks/38/keys = { "cont":true, "times":FloatArray( 0.1, 0.8 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -15, 0 ), Vector2( -15, 0 ) ] }
+tracks/39/type = "value"
+tracks/39/path = NodePath("body_main/body_back/Particles2D:transform/rot")
+tracks/39/interp = 2
+tracks/39/keys = { "cont":true, "times":FloatArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ), "transitions":FloatArray( 1, 1, 1, 1, 1, 1, 1, 1 ), "values":[ 180.0, 180.0, 200.0, 200.0, 200.0, 200.0, 180.0, 180.0 ] }
 
 [node name="fox" type="RigidBody2D"]
 
@@ -41,157 +709,166 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 
 [node name="body_main" type="Sprite" parent="fox_body"]
 
-transform/pos = Vector2( 16, -6 )
+transform/pos = Vector2( 20, -16 )
+transform/rot = 6.68917
 texture = ExtResource( 2 )
 centered = false
-offset = Vector2( -39, -20 )
+offset = Vector2( -70, -40 )
 region = true
-region_rect = Rect2( 40, 15, 55, 40 )
-__meta__ = { "_editor_collapsed":true }
-
-[node name="head" type="Sprite" parent="fox_body/body_main"]
-
-texture = ExtResource( 2 )
-centered = false
-offset = Vector2( -18, -30 )
-region = true
-region_rect = Rect2( 100, 5, 55, 50 )
-__meta__ = { "_edit_bone_":true }
-
-[node name="Position2D" type="Position2D" parent="fox_body/body_main/head"]
-
-transform/pos = Vector2( 30, -12 )
-transform/scale = Vector2( 0.2, 0.2 )
-__meta__ = { "_edit_bone_":true }
+region_rect = Rect2( 100, 30, 105, 75 )
+__meta__ = { "_edit_ik_":true }
 
 [node name="front_leg_1" type="Sprite" parent="fox_body/body_main"]
 
-transform/pos = Vector2( 2.70815, 7.79107 )
-transform/rot = -20.0
+transform/rot = 44.6032
+z/z = 1
 texture = ExtResource( 2 )
 centered = false
-offset = Vector2( -7, -10 )
+offset = Vector2( -15, -20 )
 region = true
-region_rect = Rect2( 110, 55, 15, 25 )
-__meta__ = { "_edit_bone_":true, "_editor_collapsed":true }
+region_rect = Rect2( 195, 110, 30, 50 )
+__meta__ = { "_edit_ik_":true, "_editor_collapsed":true }
 
 [node name="front_leg_2" type="Sprite" parent="fox_body/body_main/front_leg_1"]
 
-transform/pos = Vector2( 0, 8 )
-transform/rot = -40.0
+transform/pos = Vector2( 0, 18 )
+transform/rot = 4.3836
 texture = ExtResource( 2 )
 centered = false
-offset = Vector2( -7, -8 )
+offset = Vector2( -15, -15 )
 region = true
-region_rect = Rect2( 110, 80, 30, 15 )
+region_rect = Rect2( 235, 115, 30, 60 )
 __meta__ = { "_edit_bone_":true }
 
 [node name="front_leg_3" type="Sprite" parent="fox_body/body_main/front_leg_1/front_leg_2"]
 
-transform/pos = Vector2( 17.9792, 0.18622 )
-transform/rot = 120.0
+transform/pos = Vector2( 1.14441e-05, 37 )
+transform/rot = 7.3578
 texture = ExtResource( 2 )
 centered = false
-offset = Vector2( -5.09217, -8.1811 )
+offset = Vector2( -10, -9.99999 )
 region = true
-region_rect = Rect2( 130, 55, 10, 25 )
+region_rect = Rect2( 280, 115, 20, 40 )
 __meta__ = { "_edit_bone_":true }
 
 [node name="front_leg_4" type="Sprite" parent="fox_body/body_main/front_leg_1/front_leg_2/front_leg_3"]
 
-transform/pos = Vector2( 0.28062, 10.1239 )
-transform/rot = 30.0
+transform/pos = Vector2( -1.33514e-05, 20.0001 )
+transform/rot = -66.9436
+transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 centered = false
-offset = Vector2( -5, -5 )
+offset = Vector2( -9.99999, -10 )
 region = true
-region_rect = Rect2( 140, 80, 10, 15 )
+region_rect = Rect2( 275, 165, 25, 20 )
 __meta__ = { "_edit_bone_":true }
 
-[node name="Position2D" type="Position2D" parent="fox_body/body_main/front_leg_1/front_leg_2/front_leg_3/front_leg_4"]
+[node name="bone_end" type="Position2D" parent="fox_body/body_main/front_leg_1/front_leg_2/front_leg_3/front_leg_4"]
 
-transform/pos = Vector2( -0.208929, 4.29184 )
+transform/pos = Vector2( 10, 6.13928e-06 )
+transform/scale = Vector2( 0.2, 0.2 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="front_leg_2" type="Sprite" parent="fox_body/body_main"]
+
+transform/rot = 56.5402
+z/z = -1
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -15, -20 )
+modulate = Color( 0.501961, 0, 0, 1 )
+region = true
+region_rect = Rect2( 195, 110, 30, 50 )
+__meta__ = { "_edit_ik_":true, "_editor_collapsed":true }
+
+[node name="front_leg_2" type="Sprite" parent="fox_body/body_main/front_leg_2"]
+
+transform/pos = Vector2( 0, 18 )
+transform/rot = 2.78469
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -15, -15 )
+modulate = Color( 0.501961, 0, 0, 1 )
+region = true
+region_rect = Rect2( 235, 115, 30, 60 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="front_leg_3" type="Sprite" parent="fox_body/body_main/front_leg_2/front_leg_2"]
+
+transform/pos = Vector2( 0, 37 )
+transform/rot = -1.36105
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -10, -9.99999 )
+modulate = Color( 0.501961, 0, 0, 1 )
+region = true
+region_rect = Rect2( 280, 115, 20, 40 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="front_leg_4" type="Sprite" parent="fox_body/body_main/front_leg_2/front_leg_2/front_leg_3"]
+
+transform/pos = Vector2( -3.8147e-06, 20 )
+transform/rot = -57.7673
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -9.99999, -10 )
+modulate = Color( 0.501961, 0, 0, 1 )
+region = true
+region_rect = Rect2( 275, 165, 25, 20 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="bone_end" type="Position2D" parent="fox_body/body_main/front_leg_2/front_leg_2/front_leg_3/front_leg_4"]
+
+transform/pos = Vector2( 10, 6.13928e-06 )
+transform/scale = Vector2( 0.2, 0.2 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="head" type="Sprite" parent="fox_body/body_main"]
+
+transform/rot = -25.3155
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -5, -55 )
+region = true
+region_rect = Rect2( 215, 15, 80, 90 )
+__meta__ = { "_edit_bone_":true, "_editor_collapsed":true }
+
+[node name="bone_end" type="Position2D" parent="fox_body/body_main/head"]
+
+transform/pos = Vector2( 38, -27 )
 transform/scale = Vector2( 0.2, 0.2 )
 __meta__ = { "_edit_bone_":true }
 
 [node name="body_back" type="Sprite" parent="fox_body/body_main"]
 
-transform/pos = Vector2( -23, -5 )
+transform/pos = Vector2( -45, -9.99998 )
+transform/rot = -24.7395
 texture = ExtResource( 2 )
 centered = false
-offset = Vector2( -20, -15 )
+offset = Vector2( -40, -25 )
 region = true
-region_rect = Rect2( 5, 15, 35, 35 )
+region_rect = Rect2( 20, 35, 65, 60 )
 __meta__ = { "_edit_bone_":true }
 
-[node name="back_leg_1" type="Sprite" parent="fox_body/body_main/body_back"]
+[node name="Particles2D" type="Particles2D" parent="fox_body/body_main/body_back"]
 
-transform/pos = Vector2( -6.27743, 6.66226 )
-transform/scale = Vector2( 1, 1 )
-texture = ExtResource( 2 )
-centered = false
-offset = Vector2( -12, -13 )
-region = true
-region_rect = Rect2( 50, 55, 25, 35 )
-__meta__ = { "_edit_bone_":true }
-
-[node name="back_leg_2" type="Sprite" parent="fox_body/body_main/body_back/back_leg_1"]
-
-transform/pos = Vector2( -1.53391, 13.3284 )
-transform/rot = -40.0
-texture = ExtResource( 2 )
-centered = false
-offset = Vector2( -11, -11 )
-region = true
-region_rect = Rect2( 25, 60, 20, 30 )
-__meta__ = { "_edit_bone_":true }
-
-[node name="back_leg_3" type="Sprite" parent="fox_body/body_main/body_back/back_leg_1/back_leg_2"]
-
-transform/pos = Vector2( -0.390737, 13.3513 )
-transform/rot = 60.0
-texture = ExtResource( 2 )
-centered = false
-offset = Vector2( -6, -6 )
-region = true
-region_rect = Rect2( 55, 90, 15, 25 )
-__meta__ = { "_edit_bone_":true }
-
-[node name="back_leg_4" type="Sprite" parent="fox_body/body_main/body_back/back_leg_1/back_leg_2/back_leg_3"]
-
-transform/pos = Vector2( -0.422777, 11.3939 )
-transform/rot = -20.0
-texture = ExtResource( 2 )
-centered = false
-offset = Vector2( -5, -8 )
-region = true
-region_rect = Rect2( 30, 90, 15, 15 )
-__meta__ = { "_edit_bone_":true }
-
-[node name="Position2D" type="Position2D" parent="fox_body/body_main/body_back/back_leg_1/back_leg_2/back_leg_3/back_leg_4"]
-
-transform/pos = Vector2( 6.19305, 0.181452 )
-transform/scale = Vector2( 0.2, 0.2 )
-__meta__ = { "_edit_bone_":true }
-
-[node name="Particles2D" type="Particles2D" parent="fox_body"]
-
-transform/pos = Vector2( -13, -12 )
-transform/rot = 180.0
-config/amount = 10
-config/lifetime = 0.3
+transform/pos = Vector2( -15, 0 )
+transform/rot = 200.0
+config/amount = 32
+config/lifetime = 0.4
+config/preprocess = 0.1
 config/texture = ExtResource( 3 )
-config/h_frames = 10
+config/h_frames = 24
 params/direction = 90.0
 params/spread = 0.0
-params/linear_velocity = 200.0
+params/linear_velocity = 300.0
 params/spin_velocity = 0.0
 params/orbit_velocity = 0.0
 params/gravity_direction = 0.0
 params/gravity_strength = 0.0
 params/radial_accel = 0.0
 params/tangential_accel = 0.0
-params/damping = 10.0
+params/damping = 0.0
 params/initial_angle = 0.0
 params/initial_size = 1.0
 params/final_size = 1.0
@@ -200,11 +877,141 @@ params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
 script/script = ExtResource( 4 )
 
+[node name="back_leg_1" type="Sprite" parent="fox_body/body_main/body_back"]
+
+transform/pos = Vector2( -15, 5.99998 )
+transform/rot = -43.0467
+z/z = 1
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -25, -25 )
+region = true
+region_rect = Rect2( 135, 115, 50, 65 )
+__meta__ = { "_edit_ik_":true }
+
+[node name="back_leg_2" type="Sprite" parent="fox_body/body_main/body_back/back_leg_1"]
+
+transform/pos = Vector2( -3.8147e-06, 21 )
+transform/rot = -16.1209
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -20, -20 )
+region = true
+region_rect = Rect2( 80, 115, 40, 70 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="back_leg_3" type="Sprite" parent="fox_body/body_main/body_back/back_leg_1/back_leg_2"]
+
+transform/pos = Vector2( -0.0247078, 41.9753 )
+transform/rot = 35.2337
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -10, -10 )
+region = true
+region_rect = Rect2( 30, 115, 20, 50 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="back_leg_4" type="Sprite" parent="fox_body/body_main/body_back/back_leg_1/back_leg_2/back_leg_3"]
+
+transform/pos = Vector2( 2.28882e-05, 30.0002 )
+transform/rot = -103.079
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -10, -10 )
+region = true
+region_rect = Rect2( 30, 165, 30, 20 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="bone_end" type="Position2D" parent="fox_body/body_main/body_back/back_leg_1/back_leg_2/back_leg_3/back_leg_4"]
+
+transform/pos = Vector2( 11.193, 0.181389 )
+transform/scale = Vector2( 0.2, 0.2 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="back_leg_2" type="Sprite" parent="fox_body/body_main/body_back"]
+
+transform/pos = Vector2( -15, 5.99998 )
+transform/rot = -47.7155
+z/z = -1
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -25, -25 )
+modulate = Color( 0.501961, 0, 0, 1 )
+region = true
+region_rect = Rect2( 135, 115, 50, 65 )
+__meta__ = { "_edit_ik_":true }
+
+[node name="back_leg_2" type="Sprite" parent="fox_body/body_main/body_back/back_leg_2"]
+
+transform/pos = Vector2( 2.28882e-05, 21 )
+transform/rot = -24.5056
+transform/scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -20, -20 )
+modulate = Color( 0.501961, 0, 0, 1 )
+region = true
+region_rect = Rect2( 80, 115, 40, 70 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="back_leg_3" type="Sprite" parent="fox_body/body_main/body_back/back_leg_2/back_leg_2"]
+
+transform/pos = Vector2( -0.0247078, 41.9753 )
+transform/rot = 38.5455
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -10, -10 )
+modulate = Color( 0.501961, 0, 0, 1 )
+region = true
+region_rect = Rect2( 30, 115, 20, 50 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="back_leg_4" type="Sprite" parent="fox_body/body_main/body_back/back_leg_2/back_leg_2/back_leg_3"]
+
+transform/pos = Vector2( -0.000160217, 30.0004 )
+transform/rot = -103.155
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -10, -10 )
+modulate = Color( 0.501961, 0, 0, 1 )
+region = true
+region_rect = Rect2( 30, 165, 30, 20 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="bone_end" type="Position2D" parent="fox_body/body_main/body_back/back_leg_2/back_leg_2/back_leg_3/back_leg_4"]
+
+transform/pos = Vector2( 11.193, 0.181389 )
+transform/scale = Vector2( 0.2, 0.2 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="bone_end" type="Position2D" parent="fox_body/body_main/body_back"]
+
+transform/pos = Vector2( -23, -2.38419e-05 )
+transform/scale = Vector2( 0.2, 0.2 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="animation" type="AnimationPlayer" parent="fox_body"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/basic = SubResource( 2 )
+anims/fly = SubResource( 3 )
+anims/jump = SubResource( 4 )
+anims/run = SubResource( 5 )
+next/fly = ""
+next/jump = "fly"
+playback/active = true
+playback/speed = 1.0
+blend_times = [ "run", "jump", 0.1 ]
+autoplay = "run"
+
 [node name="collision_shape" type="CollisionShape2D" parent="."]
 
 visibility/behind_parent = true
 transform/rot = 90.0
 transform/scale = Vector2( 2, 2 )
+z/z = -3
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
@@ -229,5 +1036,14 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
+
+[node name="floor" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( -2.00009, 66 )
+transform/scale = Vector2( 1000, 1 )
+texture = ExtResource( 5 )
+region = true
+region_rect = Rect2( 25, 15, 5, 5 )
 
 

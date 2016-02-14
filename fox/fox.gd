@@ -32,10 +32,12 @@ func _integrate_forces(state):
 		set_angular_velocity(get_angular_velocity())
 	
 	var current_velocity = state.get_linear_velocity()
-	if (contact_count == 1) and (contact_count_old == 0):
+	if (contact_count == 1) and (contact_count_old == 0) and (jumps_left < 2):
+		get_node("fox_body/animation").play("run")
 		jumps_left = 2
 	
 	if button_jump and (button_jump_old == false) and jumps_left: # first jump button press
+		get_node("fox_body/animation").play("jump")
 		current_velocity.y = speed_y
 		button_jump_old = button_jump
 		jumps_left -= 1

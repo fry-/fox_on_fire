@@ -6,8 +6,6 @@ func _ready():
 	pass
 
 func _fixed_process(delta):
-	var angle = PI + get_node("../../../fox").get_rot()
-	set_rot(angle)
-	print(angle,"    ",get_param(0))
-	set_param(0, -(rad2deg(angle) + 90))
+	var angle = get_rot()
+	set_param(0, -(rad2deg(angle) + 80))
 	pass
